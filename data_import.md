@@ -21,7 +21,7 @@ library(readxl)
 library(haven)
 ```
 
-\##Read in some data
+## Read in some data
 
 Read in the litters dataset.
 
@@ -177,7 +177,7 @@ pulse_df
     ## 10 10092  74.2 female          10            2           11            6
     ## # ℹ 1,077 more rows
 
-\##Comparsion with Base R
+## Comparsion with Base R
 
 what about `read.csv` …? - - never!
 
@@ -320,3 +320,11 @@ litters_readr
     ## # ℹ 39 more rows
     ## # ℹ 3 more variables: `Pups born alive` <dbl>, `Pups dead @ birth` <dbl>,
     ## #   `Pups survive` <dbl>
+
+## Exporting data
+
+Export the mlb sub-table.
+
+``` r
+write_csv(mlb_df, "./data/mlb_subtable.csv")
+```
