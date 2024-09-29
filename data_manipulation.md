@@ -430,6 +430,8 @@ litters_df <- litters_df %>%
 
 ## `arrange`
 
+sort the row of “litters_df” in ascending order
+
 ``` r
 arrange(litters_df, pups_born_alive)
 ```
@@ -449,3 +451,65 @@ arrange(litters_df, pups_born_alive)
     ## 10 con7  #4/2/95/3-3         NA          NA            20               6
     ## # ℹ 39 more rows
     ## # ℹ 3 more variables: pups_dead_birth <dbl>, pups_survive <dbl>, wt_gain <dbl>
+
+## `%>%`
+
+``` r
+litters_data_row = read_csv("./data/FAS_litters.csv")
+```
+
+    ## Rows: 49 Columns: 8
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr (4): Group, Litter Number, GD0 weight, GD18 weight
+    ## dbl (4): GD of Birth, Pups born alive, Pups dead @ birth, Pups survive
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
+litters_clean_name = janitor::clean_names(litters_data_row)
+litters_data_selected = select(litters_clean_name, - pups_survive) ## exclude pup_survive
+
+litters_mutated <- litters_df %>%
+  mutate(
+    gd18_weight = as.numeric(gd18_weight),
+    gd0_weight = as.numeric(gd0_weight),
+    wt_gain = gd18_weight - gd0_weight,
+  ) ## this is modified code, change gd0_weight and gd18_weight into numerical number so that the code can processed
+
+litters_without_missing = drop_na(litters_mutated, gd0_weight) ## deleted missing number in gd0_weight
+
+litters_without_missing = drop_na(litters_mutated) ## deleted all missing number
+```
+
+USE THE PIPE OPERATOR INSTEAD
+
+``` r
+litters_df = 
+  read_csv("./data/FAS_litters.csv") %>% 
+  janitor :: clean_names() %>% 
+  select(-pups_survive) %>% ## selected everything except pups_survive
+  mutate(
+    gd18_weight = as.numeric(gd18_weight),
+    gd0_weight = as.numeric(gd0_weight),
+    wt_gain = gd18_weight - gd0_weight,
+  ) %>% 
+  drop_na(gd0_weight)
+```
+
+    ## Rows: 49 Columns: 8
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr (4): Group, Litter Number, GD0 weight, GD18 weight
+    ## dbl (4): GD of Birth, Pups born alive, Pups dead @ birth, Pups survive
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+    ## Warning: There were 2 warnings in `mutate()`.
+    ## The first warning was:
+    ## ℹ In argument: `gd18_weight = as.numeric(gd18_weight)`.
+    ## Caused by warning:
+    ## ! NAs introduced by coercion
+    ## ℹ Run `dplyr::last_dplyr_warnings()` to see the 1 remaining warning.
