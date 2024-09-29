@@ -103,7 +103,7 @@ filter row that named "Con7" and "Mod8"
 filter(litters_df, group %in% c("Con7", "Mod8"))
 ```
 
-##`mutate`
+## `mutate`
 
 this collection
 1. create a new variable "wt_gain"

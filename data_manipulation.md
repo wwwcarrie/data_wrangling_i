@@ -406,7 +406,7 @@ filter(litters_df, group %in% c("Con7", "Mod8"))
     ## 14 Mod8  #82/4           33.4       52.7                 20               8
     ## # ℹ 2 more variables: pups_dead_birth <dbl>, pups_survive <dbl>
 
-\##`mutate`
+## `mutate`
 
 this collection 1. create a new variable “wt_gain” 2. modify the
 existing variable “group”
