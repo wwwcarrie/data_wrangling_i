@@ -14,3 +14,56 @@ litters_df = read_csv("./data/Fas_litters.csv")
 litters_df = janitor :: clean_names(litters_df)
 ```
 
+##  `select`
+
+Choose some colums and not others by listing the name of those columns.
+```{r}
+select(litters_df, group, gd0_weight)
+```
+
+Select from one column to another by using ":".
+
+```{r}
+select(litters_df, group, gd0_weight:gd_of_birth)
+```
+
+Select to lose perticular column "litter_number" by using "-" .
+```{r}
+select(litters_df, -litter_number)
+```
+
+Renaming columns by using "select", result only shown the columns that changed. 
+
+```{r}
+select(litters_df, GROUP = group, LITTer_NUmBer = litter_number)
+```
+
+Renaming columns by using "rename", renamed the columns but output the whole table.
+```{r}
+rename(litters_df, GROUP = group, LITTer_NUmBer = litter_number)
+```
+
+select helpers
+
+To select particular column: "starts_with" to select any columns that name "gd"
+```{r}
+select(litters_df, starts_with("gd"))
+```
+
+select "litter_number" and keep "everything"
+```{r}
+select(litters_df, litter_number, everything())
+```
+
+relocate column
+```{r}
+relocate (litters_df, litter_number)
+```
+
+
+
+
+
+
+
+
