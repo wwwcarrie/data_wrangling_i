@@ -103,6 +103,36 @@ filter row that named "Con7" and "Mod8"
 filter(litters_df, group %in% c("Con7", "Mod8"))
 ```
 
+##`mutate`
+
+this collection
+1. create a new variable "wt_gain"
+2. modify the existing variable "group" 
+
+```{r}
+mutate(
+  litters_df,
+  wt_gain = gd18_weight - gd0_weight,
+  group = str_to_lower(group))
+```
+
+
+```{r}
+litters_df <- litters_df %>%
+  mutate(
+    gd18_weight = as.numeric(gd18_weight),
+    gd0_weight = as.numeric(gd0_weight),
+    wt_gain = gd18_weight - gd0_weight,
+    group = str_to_lower(group)
+  )
+
+```
+
+
+
+
+
+
 
 
 

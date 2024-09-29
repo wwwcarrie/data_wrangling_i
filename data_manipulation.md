@@ -405,3 +405,25 @@ filter(litters_df, group %in% c("Con7", "Mod8"))
     ## 13 Mod8  #2/95/2         28.5       44.5                 20               9
     ## 14 Mod8  #82/4           33.4       52.7                 20               8
     ## # ℹ 2 more variables: pups_dead_birth <dbl>, pups_survive <dbl>
+
+\##`mutate`
+
+this collection 1. create a new variable “wt_gain” 2. modify the
+existing variable “group”
+
+``` r
+litters_df <- litters_df %>%
+  mutate(
+    gd18_weight = as.numeric(gd18_weight),
+    gd0_weight = as.numeric(gd0_weight),
+    wt_gain = gd18_weight - gd0_weight,
+    group = str_to_lower(group)
+  )
+```
+
+    ## Warning: There were 2 warnings in `mutate()`.
+    ## The first warning was:
+    ## ℹ In argument: `gd18_weight = as.numeric(gd18_weight)`.
+    ## Caused by warning:
+    ## ! NAs introduced by coercion
+    ## ℹ Run `dplyr::last_dplyr_warnings()` to see the 1 remaining warning.
