@@ -7,3 +7,10 @@ output: github_document
 library(tidyverse)
 ```
 
+## Load in the FAS litters Data
+
+```{r}
+litters_df = read_csv("./data/Fas_litters.csv")
+litters_df = janitor :: clean_names(litters_df)
+```
+
