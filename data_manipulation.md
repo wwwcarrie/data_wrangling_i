@@ -427,3 +427,25 @@ litters_df <- litters_df %>%
     ## Caused by warning:
     ## ! NAs introduced by coercion
     ## ℹ Run `dplyr::last_dplyr_warnings()` to see the 1 remaining warning.
+
+## `arrange`
+
+``` r
+arrange(litters_df, pups_born_alive)
+```
+
+    ## # A tibble: 49 × 9
+    ##    group litter_number gd0_weight gd18_weight gd_of_birth pups_born_alive
+    ##    <chr> <chr>              <dbl>       <dbl>       <dbl>           <dbl>
+    ##  1 con7  #85                 19.7        34.7          20               3
+    ##  2 low7  #111                25.5        44.6          20               3
+    ##  3 low8  #4/84               21.8        35.2          20               4
+    ##  4 con7  #5/4/2/95/2         28.5        44.1          19               5
+    ##  5 con8  #2/2/95/2           NA          NA            19               5
+    ##  6 mod7  #3/82/3-2           28          45.9          20               5
+    ##  7 mod7  #5/3/83/5-2         22.6        37            19               5
+    ##  8 mod7  #106                21.7        37.8          20               5
+    ##  9 con7  #5/5/3/83/3-3       26          41.4          19               6
+    ## 10 con7  #4/2/95/3-3         NA          NA            20               6
+    ## # ℹ 39 more rows
+    ## # ℹ 3 more variables: pups_dead_birth <dbl>, pups_survive <dbl>, wt_gain <dbl>
