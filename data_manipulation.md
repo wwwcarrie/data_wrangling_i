@@ -192,7 +192,7 @@ select(litters_df, litter_number, everything())
     ## # ℹ 39 more rows
     ## # ℹ 2 more variables: pups_dead_birth <dbl>, pups_survive <dbl>
 
-relocate column
+relocate column, bring to front
 
 ``` r
 relocate (litters_df, litter_number)

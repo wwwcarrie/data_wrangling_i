@@ -55,7 +55,7 @@ select "litter_number" and keep "everything"
 select(litters_df, litter_number, everything())
 ```
 
-relocate column
+relocate column, bring to front
 ```{r}
 relocate (litters_df, litter_number)
 ```
